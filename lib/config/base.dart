@@ -52,6 +52,11 @@ abstract class Base<T extends StatefulWidget> extends State<T>
   //   titleStyle: TextStyle(color: Colors.blue),
   //   alertAlignment: Alignment.topCenter,
   // );
+  // Future<void> httpOverrides() async {
+  //   HttpProxyOverride httpProxyOverride =
+  //       await HttpProxyOverride.createHttpProxy();
+  //   HttpOverrides.global = httpProxyOverride;
+  // }
 
   //This function gets the loaclly stored session data
   Future<void> getSessionData() async {
@@ -304,8 +309,6 @@ abstract class Base<T extends StatefulWidget> extends State<T>
     hideLoading();
   }
 
-  
-
   showMessage(String title, String message) {
     hideLoading();
     if (Platform.isAndroid) {
@@ -464,5 +467,3 @@ BoxDecoration customDecoration() {
     ],
   );
 }
-
-

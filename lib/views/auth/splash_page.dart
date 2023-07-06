@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:animated_flight_paths/animated_flight_paths.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../reusablewidgets/tille.dart';
-import 'signin.dart';
+import '../reusable_widgets/tille.dart';
 
 class AnimatedFlightPathsExample extends StatefulWidget {
   const AnimatedFlightPathsExample({super.key});
@@ -32,19 +32,20 @@ class _AnimatedFlightPathsExampleState extends State<AnimatedFlightPathsExample>
   }
 
   void toToNextPage() {
-    Timer(const Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 10), () {
       goToSignin();
     });
   }
 
   goToSignin() {
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(
-        builder: (BuildContext context) => const SignInPage(),
-      ),
-      ModalRoute.withName("/"),
-    );
+    // Navigator.pushAndRemoveUntil(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (BuildContext context) => const SignInPage(),
+    //   ),
+    //   ModalRoute.withName("/"),
+    // );
+    context.go('/signin');
   }
 
   recordFistVisit() async {
@@ -73,17 +74,21 @@ class _AnimatedFlightPathsExampleState extends State<AnimatedFlightPathsExample>
             colors: [Color(0xFF27163e), Color(0xFF432a72)],
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            const SizedBox(height: 24),
-            const Center(child: Title1()),
-            const SizedBox(height: 24),
-            Center(child: _animatedFlightPaths),
-            const SizedBox(height: 24),
-            const SizedBox(height: 24),
-            const SizedBox(height: 24),
-          ],
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const SizedBox(height: 10),
+              const Center(child: Title1()),
+              SizedBox(
+                  width: MediaQuery.of(context).size.width * .9,
+                  height: MediaQuery.of(context).size.height * .7,
+                  child: _animatedFlightPaths),
+              const SizedBox(height: 24),
+            ],
+          ),
         ),
       ),
     );
@@ -110,7 +115,7 @@ class _AnimatedFlightPathsExampleState extends State<AnimatedFlightPathsExample>
           endpointToLabelSpacing: 12,
           endpointDotAlwaysVisible: false,
           endpointLabelAlwaysVisible: false,
-          keepFlightPathsVisible: false,
+          keepFlightPathsVisible: true,
           curveDepth: 0.5,
           endpointWeight: 0.2,
         ),
@@ -228,15 +233,24 @@ class Label extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 12,
+        vertical: 8,
+      ),
       decoration: BoxDecoration(
         color: SynthwaveColors.black,
-        border: Border.all(color: SynthwaveColors.blue, width: 2),
+        border: Border.all(
+          color: SynthwaveColors.blue,
+          width: 2,
+        ),
         borderRadius: BorderRadius.circular(32),
       ),
       child: Text(
         text,
-        style: TextStyle(color: SynthwaveColors.blue, fontSize: 14),
+        style: const TextStyle(
+          color: SynthwaveColors.blue,
+          fontSize: 14,
+        ),
       ),
     );
   }

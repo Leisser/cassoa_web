@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../home/homepage.dart';
-import 'signin.dart';
-import 'splash_page.dart';
 
 class CheckIfSignedIn extends StatefulWidget {
   const CheckIfSignedIn({super.key});
@@ -31,33 +28,36 @@ class _CheckIfSignedInState extends State<CheckIfSignedIn> {
   }
 
   goToHome() {
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const HomePage(),
-      ),
-      ModalRoute.withName("/"),
-    );
+    // Navigator.pushAndRemoveUntil(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => const HomePage(),
+    //   ),
+    //   ModalRoute.withName("/"),
+    // );
+    context.go('/');
   }
 
   goToSignUp() {
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(
-        builder: (BuildContext context) => const SignInPage(),
-      ),
-      ModalRoute.withName("/"),
-    );
+    // Navigator.pushAndRemoveUntil(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (BuildContext context) => const SignInPage(),
+    //   ),
+    //   ModalRoute.withName("/"),
+    // );
+    context.go('/signin');
   }
 
   goToSplash() {
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(
-        builder: (BuildContext context) => const AnimatedFlightPathsExample(),
-      ),
-      ModalRoute.withName("/"),
-    );
+    // Navigator.pushAndRemoveUntil(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (BuildContext context) => const AnimatedFlightPathsExample(),
+    //   ),
+    //   ModalRoute.withName("/"),
+    // );
+    context.go('/splashscreen');
   }
 
   ifNotSignedIn() {

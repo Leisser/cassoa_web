@@ -5,7 +5,7 @@ class AppConstants {
   // static String legalUrl = "https://aston-network.org/legal-notice/";
   static String englishFont = "Poppins";
   // static String oldbaseUrl = "https://api.onekomplex.com/api/";
-  static String baseUrl = "https://157.245.81.104:8000/";
+  static String baseUrl = "https://cassoatry.shop/";
   // static String baseUrl = "http://142.93.138.50/";
   // static String baseUrl = "http://10.0.2.2:8000/";
   // static String baseUrl ="https://dmmp.kcca.go.ug/";
@@ -20,7 +20,7 @@ ValueNotifier<int> backtohome = ValueNotifier<int>(6);
 ValueNotifier<bool> tripStatus = ValueNotifier<bool>(false);
 ValueNotifier<String> tripString = ValueNotifier<String>("");
 ValueNotifier<String> ticketString = ValueNotifier<String>("all");
-final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 const defaultPadding = 16.0;
 const primaryColor = Color.fromRGBO(34, 112, 59, 1);
 const secondaryColor = Color(0xFF2A2D3E);
